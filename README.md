@@ -1,4 +1,4 @@
-# Multi-Armed Bandit: Action Selection Strategies
+# Multi-Armed Bandit: Action Selection Methods
 
 ![Experiment 1 Results](experiment_1.png)
 
