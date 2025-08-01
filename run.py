@@ -55,6 +55,12 @@ class Run:
             self.ucb_rewards[time_step] += reward
         return reward
     
-    def average_rewards(self):
-        self.greedy_rewards = self.greedy_rewards / 100
-        self.epsilon_rewards = self.epsilon_rewards / 100
+    def average_rewards(self, num_runs):
+        '''
+        Args:
+            num_runs: number of runs to average rewards over for all timesteps t
+        '''
+        
+        self.greedy_rewards = self.greedy_rewards / num_runs
+        self.epsilon_rewards = self.epsilon_rewards / num_runs
+        self.ucb_rewards = self.ucb_rewards / num_runs

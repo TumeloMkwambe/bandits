@@ -55,10 +55,10 @@ class Greedy(Algorithm):
         super().__init__(name, num_actions)
         self._estimated_values = np.full((num_actions,), q_1) # run-dependent & algorithm-specific
 
-    def select_action(self):
+    def select_action(self, t):
         '''
         Function/Objective:
-            selects action action with the current best action-value and updates number of times action has been selected
+            selects action with the current best action-value and updates number of times action has been selected
         '''
 
         action = self._estimated_values.argmax()
@@ -79,7 +79,7 @@ class Epsilon(Algorithm):
         super().__init__(name, num_actions)
         self.__epsilon = epsilon # run-dependent
 
-    def select_action(self):
+    def select_action(self, t):
         '''
             Function/Objective: selects action action with the current best action-value with probability 1 - epsilon and updates number of times action has been selected
         '''
@@ -87,17 +87,28 @@ class Epsilon(Algorithm):
         action = self._estimated_values.argmax() if random.random() > self.__epsilon else random.randint(0, self._num_actions - 1)
         return action
 
-'''
+
 class UCB(Algorithm):
     def __init__(self, name, num_actions, c=2):
+        '''
         Args:
             name (string): name of the algorithm (action-value method)
             num_actions (int): number of actions/arms
             c (int): exploration hyperparameter to control how much UCB explores
+        '''
 
         super().__init__(name, num_actions)
-        self.__estimated_values = np.full((num_actions,), q_1)
+        self.__c = c
 
-    def select_action(self):
-        Implement Upper-Confidence-Bound
-'''
+    def select_action(self, t):
+        '''
+        Args:
+            t: time step
+
+        Function/Objective:
+            selects action with the best action-value estimate by UCB standard and updates number of times action has been selected
+        '''
+
+        ucb_values = self._estimated_values + self.__c * np.sqrt(np.log(t) / self._action_counts)
+        action = np.argmax(ucb_values)
+        return action
