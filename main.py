@@ -30,7 +30,7 @@ def Runs(Run_, num_runs, num_actions, num_timesteps, q_1, epsilon, c):
 
 
 ### * * * * * * * * EXPERIMENT 1 * * * * * * * * ### 
-'''
+
 num_actions = 10
 num_timesteps = 1000
 num_runs = 1000
@@ -55,7 +55,7 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
-'''
+
 
 ### * * * * * * * * EXPERIMENT 2 * * * * * * * * ###
 
