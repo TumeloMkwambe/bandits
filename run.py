@@ -21,7 +21,6 @@ class Run:
             epsilon_rewards (np.array): array to record rewards from epsilon-greedy actions for each time step
             ucb_rewards (np.array): array to record rewards from ucb actions for each time step
             __action_values (np.array): actual action values for a particular run
-        
         '''
 
         self.__num_actions = num_actions # run-agnostic, kept constant for all runs
@@ -66,3 +65,8 @@ class Run:
         self.greedy_rewards = self.greedy_rewards / num_runs
         self.epsilon_rewards = self.epsilon_rewards / num_runs
         self.ucb_rewards = self.ucb_rewards / num_runs
+    
+    def reset_rewards(self, duration):
+        self.greedy_rewards = np.zeros(duration)
+        self.epsilon_rewards = np.zeros(duration)
+        self.epsilon_rewards = np.zeros(duration)
