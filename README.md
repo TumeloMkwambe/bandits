@@ -14,7 +14,7 @@ The goal is to evaluate how each algorithm performs over time in terms of **aver
 
 - **Number of actions**: 10
 - **Time steps per run**: 1000
-- **Total runs**: 10,000
+- **Total runs**: 1000
 - **Initial estimated value (Q₁)**: 5 for all actions
 - **ε (epsilon for exploration)**: 0.1
 - **c (UCB exploration parameter)**: 2
