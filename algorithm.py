@@ -32,8 +32,7 @@ class Algorithm:
             reward (float): reward obtained after taking action
             time_step (int): time step for action and reward
         
-        Function/Objective:
-            performs incremental sample average to estimate selected action's action-value
+        Objective: performs incremental sample average to estimate selected action's action-value
         '''
         self._action_counts[action] += 1
         self._estimated_values[action] += 1 / self._action_counts[action] * (reward - self._estimated_values[action])
@@ -57,8 +56,7 @@ class Greedy(Algorithm):
 
     def select_action(self, t):
         '''
-        Function/Objective:
-            selects action with the current best action-value and updates number of times action has been selected
+        Objective: selects action with the current best action-value and updates number of times action has been selected
         '''
 
         action = self._estimated_values.argmax()
@@ -81,7 +79,7 @@ class Epsilon(Algorithm):
 
     def select_action(self, t):
         '''
-            Function/Objective: selects action action with the current best action-value with probability 1 - epsilon and updates number of times action has been selected
+            Objective: selects action action with the current best action-value with probability 1 - epsilon and updates number of times action has been selected
         '''
 
         action = self._estimated_values.argmax() if random.random() > self.__epsilon else random.randint(0, self._num_actions - 1)
@@ -103,10 +101,9 @@ class UCB(Algorithm):
     def select_action(self, t):
         '''
         Args:
-            t: time step
+            t (int): time step
 
-        Function/Objective:
-            selects action with the best action-value estimate by UCB standard and updates number of times action has been selected
+        Objective: selects action with the best action-value estimate by UCB standard and updates number of times action has been selected
         '''
 
         ucb_values = self._estimated_values + self.__c * np.sqrt(np.log(t) / self._action_counts)

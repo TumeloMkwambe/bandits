@@ -32,7 +32,7 @@ class Run:
     
     def initial_values(self):
         '''
-        Function/Objective: samples true action-values from a gaussian distribution
+        Objective: samples true action-values from a gaussian distribution
         '''
 
         self.__action_values = np.random.normal(0, 3, self.__num_actions)
@@ -43,6 +43,8 @@ class Run:
             algorithm (string): name of the algorithm which selected action which resulted in the reward
             action (int): action responsible for the reward
             time_step (int): time step at which action was selected and reward was received
+        
+        Objective: adds reward to action selection method rewards array for specified timestep
         '''
 
         action_value = self.__action_values[action]
@@ -58,7 +60,7 @@ class Run:
     def average_rewards(self, num_runs):
         '''
         Args:
-            num_runs: number of runs to average rewards over for all timesteps t
+            num_runs (int): number of runs to average rewards over for all timesteps t
         '''
         
         self.greedy_rewards = self.greedy_rewards / num_runs
