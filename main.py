@@ -33,7 +33,7 @@ def Runs(Run_, num_runs, num_actions, num_timesteps, q_1, epsilon, c):
 
 num_actions = 10
 num_timesteps = 1000
-num_runs = 1000
+num_runs = 100
 
 q_1 = 5
 epsilon = 0.1
@@ -58,7 +58,7 @@ plt.show()
 
 
 ### * * * * * * * * EXPERIMENT 2 * * * * * * * * ###
-
+'''
 num_actions = 10
 num_timesteps = 1000
 num_runs = 1000
@@ -117,3 +117,4 @@ axs[2].grid(True)
 fig.suptitle('Experiment 2: Average Reward over Time for Varying Hyperparameters', fontsize=16)
 plt.tight_layout()
 plt.show()
+'''

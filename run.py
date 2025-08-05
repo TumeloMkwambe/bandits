@@ -34,7 +34,7 @@ class Run:
         Objective: samples true action-values from a gaussian distribution
         '''
 
-        self.__action_values = np.random.normal(0, 3, self.__num_actions)
+        self.__action_values = np.random.normal(0, np.sqrt(3), self.__num_actions)
     
     def update_rewards(self, algorithm, action, time_step):
         '''
@@ -47,7 +47,7 @@ class Run:
         '''
 
         action_value = self.__action_values[action]
-        reward = np.random.normal(action_value, 1)
+        reward = np.random.normal(action_value, np.sqrt(1))
         if(algorithm == "greedy"):
             self.greedy_rewards[time_step] += reward
         if(algorithm == "epsilon"):

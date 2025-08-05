@@ -106,6 +106,6 @@ class UCB(Algorithm):
         Objective: selects action with the best action-value estimate by UCB standard and updates number of times action has been selected
         '''
 
-        ucb_values = self._estimated_values + self.__c * np.sqrt(np.log(t) / self._action_counts)
+        ucb_values = self._estimated_values + self.__c * np.sqrt(np.log(t) / self._action_counts + 1e-5)
         action = np.argmax(ucb_values)
         return action
